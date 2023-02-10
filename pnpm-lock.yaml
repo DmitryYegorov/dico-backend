@@ -19,6 +19,7 @@ specifiers:
   '@prisma/client': ^4.10.1
   '@types/jest': 28.1.1
   '@types/node': 18.7.1
+  '@types/nodemailer': ^6.4.7
   '@typescript-eslint/eslint-plugin': ^5.36.1
   '@typescript-eslint/parser': ^5.36.1
   axios: ^1.0.0
@@ -29,6 +30,7 @@ specifiers:
   jest: 28.1.1
   jest-environment-jsdom: 28.1.1
   kafkajs: ^2.2.3
+  nodemailer: ^6.9.1
   nx: 15.6.3
   prettier: ^2.6.2
   reflect-metadata: ^0.1.13
@@ -49,6 +51,7 @@ dependencies:
   class-transformer: 0.5.1
   class-validator: 0.14.0
   kafkajs: 2.2.3
+  nodemailer: 6.9.1
   reflect-metadata: 0.1.13
   rxjs: 7.8.0
   tslib: 2.5.0
@@ -66,6 +69,7 @@ devDependencies:
   '@nrwl/workspace': 15.6.3_da5d797e793aa294804d1f77096f5305
   '@types/jest': 28.1.1
   '@types/node': 18.7.1
+  '@types/nodemailer': 6.4.7
   '@typescript-eslint/eslint-plugin': 5.51.0_cc96be9e14335428c238fd90b8c380d1
   '@typescript-eslint/parser': 5.51.0_eslint@8.15.0+typescript@4.8.4
   eslint: 8.15.0
@@ -2511,6 +2515,12 @@ packages:
 
   /@types/node/18.7.1:
     resolution: {integrity: sha512-GKX1Qnqxo4S+Z/+Z8KKPLpH282LD7jLHWJcVryOflnsnH+BtSDfieR6ObwBMwpnNws0bUK8GI7z0unQf9bARNQ==}
+    dev: true
+
+  /@types/nodemailer/6.4.7:
+    resolution: {integrity: sha512-f5qCBGAn/f0qtRcd4SEn88c8Fp3Swct1731X4ryPKqS61/A3LmmzN8zaEz7hneJvpjFbUUgY7lru/B/7ODTazg==}
+    dependencies:
+      '@types/node': 18.13.0
     dev: true
 
   /@types/parse-json/4.0.0:
@@ -6275,6 +6285,11 @@ packages:
   /node-releases/2.0.10:
     resolution: {integrity: sha512-5GFldHPXVG/YZmFzJvKK2zDSzPKhEp0+ZR5SVaoSag9fsL5YgHbUHDfnG5494ISANDcK4KwPXAx2xqVEydmd7w==}
     dev: true
+
+  /nodemailer/6.9.1:
+    resolution: {integrity: sha512-qHw7dOiU5UKNnQpXktdgQ1d3OFgRAekuvbJLcdG5dnEo/GtcTHRYM7+UfJARdOFU9WUQO8OiIamgWPmiSFHYAA==}
+    engines: {node: '>=6.0.0'}
+    dev: false
 
   /normalize-path/3.0.0:
     resolution: {integrity: sha512-6eZs5Ls3WtCisHWp9S2GUy8dqkpGi4BVSz3GaqiE6ezub0512ESztXUwUB6C6IKbQkY2Pnb/mD4WYojCRwcwLA==}
