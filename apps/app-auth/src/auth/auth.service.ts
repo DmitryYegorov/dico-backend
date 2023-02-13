@@ -8,6 +8,7 @@ import { AuthRepository } from './auth.repository';
 import { ClientKafka, RpcException } from '@nestjs/microservices';
 import { Dto } from '@dico-backend/common';
 import * as bcrypt from 'bcrypt';
+import { last } from 'rxjs';
 
 @Injectable()
 export class AuthService {
@@ -35,7 +36,7 @@ export class AuthService {
       }
 
       const salt = bcrypt.genSaltSync();
-      const hashPass = bcrypt.hash(password, salt);
+      const hashPass = await bcrypt.hash(password, salt);
 
       await this.repo.create({
         firstName,
@@ -44,10 +45,20 @@ export class AuthService {
         password: hashPass,
       });
 
-      // await this.notificationsClient.emit(
-      //   'notifications.send_email',
-      //   JSON.stringify({ email })
-      // );
+      await this.notificationsClient.emit(
+        'notifications.send_email',
+        JSON.stringify({
+          email,
+          templateId: 'user-registered-welcome',
+          subject: 'Welcome to Dico',
+          options: {
+            fullName: `${firstName} ${lastName}`,
+            activationCode: 123456789,
+          },
+        })
+      );
+
+      this.logger.log(`Completed register`);
     } catch (error) {
       this.logger.error(`Failed register: ${error}`);
       throw error;

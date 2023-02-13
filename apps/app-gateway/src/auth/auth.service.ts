@@ -19,7 +19,7 @@ export class AuthService implements OnModuleInit {
 
   async register(data: Dto.Auth.UserRegisterDto) {
     try {
-      this.logger.log(`Invoked register: ${JSON.stringify(data)}`);
+      this.logger.log(`Invoked register endpoint`);
 
       return this.authClient.send('auth.register', JSON.stringify(data));
     } catch (error) {

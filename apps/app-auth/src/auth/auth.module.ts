@@ -7,10 +7,11 @@ import {
   MicroserviceOptions,
   Transport,
 } from '@nestjs/microservices';
+import { AuthService } from './auth.service';
 
 @Module({
   controllers: [AuthController],
-  providers: [AuthRepository, PrismaService],
+  providers: [AuthRepository, AuthService, PrismaService],
   imports: [
     ClientsModule.register([
       {
