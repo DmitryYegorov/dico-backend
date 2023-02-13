@@ -1,6 +1,7 @@
 import { Inject, Injectable, Logger, OnModuleInit } from '@nestjs/common';
 import { ClientKafka } from '@nestjs/microservices';
 import { ConfigService } from '@nestjs/config';
+import { Dto } from '@dico-backend/common';
 
 @Injectable()
 export class AuthService implements OnModuleInit {
@@ -16,10 +17,9 @@ export class AuthService implements OnModuleInit {
     await this.authClient.connect();
   }
 
-  async register(data: any) {
+  async register(data: Dto.Auth.UserRegisterDto) {
     try {
       this.logger.log(`Invoked register: ${JSON.stringify(data)}`);
-      this.logger.debug({ test: this.config.get('TEST') });
 
       return this.authClient.send('auth.register', JSON.stringify(data));
     } catch (error) {

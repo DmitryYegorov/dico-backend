@@ -2,6 +2,7 @@ import { Controller, Logger, ValidationPipe } from '@nestjs/common';
 import { MessagePattern, Payload } from '@nestjs/microservices';
 import { AuthRepository } from './auth.repository';
 import { ConfigService } from '@nestjs/config';
+import { Dto } from '@dico-backend/common';
 
 @Controller()
 export class AuthController {
@@ -13,10 +14,10 @@ export class AuthController {
   ) {}
 
   @MessagePattern('auth.register')
-  async register(@Payload(ValidationPipe) data) {
+  async register(@Payload(ValidationPipe) data: Dto.Auth.UserRegisterDto) {
     try {
       this.logger.log('Invoked register');
-      this.logger.debug({ test: this.config.get('TEST') });
+
       return this.repo.create(data);
     } catch (e) {
       this.logger.error('Failed register', e);

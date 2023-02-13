@@ -1,1 +1,1 @@
-export * from './lib/common.module';
+export * as Dto from './dto';
