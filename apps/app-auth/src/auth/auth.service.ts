@@ -1,14 +1,14 @@
 import {
   BadRequestException,
+  HttpStatus,
   Inject,
   Injectable,
   Logger,
 } from '@nestjs/common';
 import { AuthRepository } from './auth.repository';
 import { ClientKafka, RpcException } from '@nestjs/microservices';
-import { Dto } from '@dico-backend/common';
+import { Dto, Filters } from '@dico-backend/common';
 import * as bcrypt from 'bcrypt';
-import { last } from 'rxjs';
 
 @Injectable()
 export class AuthService {
