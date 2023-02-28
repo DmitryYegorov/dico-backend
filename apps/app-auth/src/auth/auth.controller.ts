@@ -13,4 +13,9 @@ export class AuthController {
   async register(@Payload(ValidationPipe) data: Dto.Auth.UserRegisterDto) {
     return this.service.register(data);
   }
+
+  @MessagePattern('auth.login.email')
+  async loginEmail(@Payload(ValidationPipe) data: Dto.Auth.UserLoginDto) {
+    return this.service.login(data);
+  }
 }

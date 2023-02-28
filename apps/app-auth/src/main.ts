@@ -26,9 +26,8 @@ async function bootstrap() {
     }
   );
 
-  // const adapter = app.get(HttpAdapterHost);
-  //
-  // app.useGlobalFilters(new Filters.RpcExceptionFilter(adapter));
+  const adapter = app.get(HttpAdapterHost);
+  app.useGlobalFilters(new Filters.RpcExceptionFilter());
 
   await app.listen();
 }
