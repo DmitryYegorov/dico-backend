@@ -13,6 +13,10 @@ async function bootstrap() {
   const adapter = app.get(HttpAdapterHost);
   app.useGlobalFilters(new Filters.AllExceptionFilter(adapter));
   app.useGlobalFilters(new Filters.HttpExceptionFilter());
+  app.enableCors({
+    origin: '*',
+    methods: ['POST'],
+  });
 
   await app.listen(4444);
 }

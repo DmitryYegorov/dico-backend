@@ -1,7 +1,6 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { createTransport } from 'nodemailer';
 import { ConfigService } from '@nestjs/config';
-import { config } from 'rxjs';
 import { TemplateEngineService } from './template-engine.service';
 
 @Injectable()
